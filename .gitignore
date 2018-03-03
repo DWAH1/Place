@@ -1,0 +1,5 @@
+#NPM junk files
+/package-lock.json
+
+#WebStorm junk files
+.idea/
