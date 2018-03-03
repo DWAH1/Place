@@ -3,3 +3,4 @@
 
 #WebStorm junk files
 .idea/
+node_modules/
