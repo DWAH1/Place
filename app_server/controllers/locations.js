@@ -15,20 +15,20 @@ module.exports.homelist = function(req, res) {
             facilities: ["Вкусный кофе", "Хорошие роллы", "Прекрасный вай-фай"],
             distance: '100м'
         },
-            {
-                name: 'Lounge-кафе "Relax"',
-                address: 'Литейный проспект, 47',
-                rating: 4,
-                facilities: ["Удобные диваны", "Вкусные кальяны", "Вип-комнаты"],
-                distance: '500м'
-            },
-            {
-                name: 'McDonalds',
-                address: 'Невский проспект, 97',
-                rating: 2,
-                facilities: ["Хороший вай-фай", "Вкусная еда"],
-                distance: '250м'
-            }]
+        {
+            name: 'Lounge-кафе "Relax"',
+            address: 'Литейный проспект, 47',
+            rating: 4,
+            facilities: ["Удобные диваны", "Вкусные кальяны", "Вип-комнаты"],
+            distance: '500м'
+        },
+        {
+            name: 'McDonalds',
+            address: 'Невский проспект, 97',
+            rating: 2,
+            facilities: ["Хороший вай-фай", "Вкусная еда"],
+            distance: '250м'
+        }]
     });
 };
 
