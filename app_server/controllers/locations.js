@@ -58,7 +58,7 @@ var renderDetailPage = function(req, res, locDetail) {
         title: locDetail.name,
         pageHeader: {title: locDetail.name},
         sidebar: {
-            context: 'Сушия на Place потому что это прекрасное время где можно провести время и заняться продуктивной работой.',
+            context: 'Сушия на Place потому что это прекрасное место где можно провести время и заняться продуктивной работой.',
             callToAction: 'Если вы здесь были и вам понравилось, ну или нет - пожалуйста оставьте отзыв, чтобы помочь другим пользователям.'
         },
         location: locDetail

@@ -28,7 +28,9 @@ a {
 }
 
 .label-warning {
-	padding: 2px 5px;
+	line-height: 2;
+	cursor: default;
+	-webkit-user-select: none;
 }
 
 .panel-title.reviews {
