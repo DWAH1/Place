@@ -28,10 +28,15 @@ a {
 }
 
 .label-warning {
-	line-height: 2;
-	cursor: default;
-	-webkit-user-select: none;
+	 line-height: 2;
+	 cursor: default;
+	 -webkit-user-select: none;
 }
+
+.label-warning.main {
+	margin: 0 2px;
+}
+
 
 .panel-title.reviews {
 	line-height: 40px;
