@@ -3,8 +3,9 @@ var locationListCtrl = function($scope, placeData, geolocation) {
     $scope.getData = function(position) {
         var lat = position.coords.latitude,
             lng = position.coords.longitude;
-        console.log(lat);
-        console.log(lng);
+
+        console.log(lat); console.log(lng);
+        lng =  35.046562; lat = 48.435216;
         $scope.message = "Ищем места поблизости...";
         placeData.locationByCoords(lat, lng)
             .success(function(data) {

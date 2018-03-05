@@ -37,7 +37,14 @@ a {
 	margin: 0 2px;
 }
 
-
 .panel-title.reviews {
 	line-height: 40px;
+}
+
+input[name='filter'] {
+	margin-left: 10px;
+	border-radius: 5px;
+	background-color: #4e5d6c;
+	border: none;
+	color: white;
 }

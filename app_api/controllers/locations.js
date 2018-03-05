@@ -7,14 +7,9 @@ var sendJSONResponse = function(res, status, content) {
 };
 
 module.exports.locationsListByDistance = function(req, res) {
-    console.log('LOC', Loc.aggregate);
     var lng = parseFloat(req.query.lng);
     var lat = parseFloat(req.query.lat);
-    var geoOptions = {
-        spherical: true,
-        num: 10,
-        maxDistance: 20000
-    };
+
     var point = {
         type: "Point",
         coordinates: [lng, lat]
@@ -25,14 +20,14 @@ module.exports.locationsListByDistance = function(req, res) {
         });
         return;
     }
-    console.log("COORDS", point);
     Loc.aggregate([
         {
             $geoNear: {
                 near: point,
                 distanceField: "dist.calculated",
                 spherical: true,
-                num: 5
+                num: 5,
+                maxDistance: 200000000
             }
         }
     ]).then(function(results){
@@ -56,25 +51,6 @@ module.exports.locationsListByDistance = function(req, res) {
     }).catch(function (e) {
         console.log(e);
     });
-    //Loc.geoNear(point, geoOptions, function(err, results, stats) {
-
-        // var locations = [];
-        // if(err) {
-        //     sendJSONResponse(res, 404, err);
-        // } else {
-        //     results.forEach(function(doc) {
-        //         locations.push({
-        //             distance: doc.dis,
-        //             name: doc.obj.name,
-        //             address: doc.obj.address,
-        //             rating: doc.obj.rating,
-        //             facilities: doc.obj.facilities,
-        //             _id: doc.obj._id
-        //         });
-        //     });
-        //     sendJSONResponse(res, 200, locations);
-        // }
-    //});
 };
 
 module.exports.locationsCreate = function(req, res) {

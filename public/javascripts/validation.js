@@ -1,5 +1,4 @@
 $('#addReview').submit(function(e) {
-    debugger;
     $('.alert.alert-danger').hide();
     if (!$('input#name').val() || !$('select#rating').val() || !$('textarea#review').val()) {
         if($('.alert.alert-danger').length) {

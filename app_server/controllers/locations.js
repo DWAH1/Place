@@ -16,18 +16,6 @@ var renderHomepage = function(req, res) {
 	});
 };
 
-// var _formatDistance = function(distance) {
-// 	var numDistance, unit;
-// 	if(distance > 1000) {
-// 		numDistance = parseFloat(distance/1000).toFixed(1);
-// 		unit = ' км';
-// 	} else {
-// 		numDistance = parseInt(distance);
-// 		unit = ' м';
-// 	}
-// 	return numDistance + unit;
-// };
-
 module.exports.homelist = function(req, res) {
 		renderHomepage(req, res);
 };
