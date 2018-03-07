@@ -48,3 +48,7 @@ input[name='filter'] {
 	border: none;
 	color: white;
 }
+
+.list-group-item {
+	margin: 5px 0;
+}

@@ -8,11 +8,11 @@ var ctrlOther = require('../controllers/other');
 
 
 /* GET home page. */
-router.get('/', ctrlLocations.homelist);
-router.get('/location/:locationid', ctrlLocations.locationInfo);
-router.get('/location/:locationid/reviews/new', ctrlLocations.addReview);
-router.post('/location/:locationid/reviews/new', ctrlLocations.doAddReview);
+router.get('/', ctrlOther.angularApp);
+// router.get('/location/:locationid', ctrlLocations.locationInfo);
+// router.get('/location/:locationid/reviews/new', ctrlLocations.addReview);
+// router.post('/location/:locationid/reviews/new', ctrlLocations.doAddReview);
 
-router.get('/about', ctrlOther.about);
+// router.get('/about', ctrlOther.about);
 
 module.exports = router;
