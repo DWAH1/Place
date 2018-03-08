@@ -28,16 +28,17 @@ a {
 }
 
 .label-warning {
+	 margin: 0 3px;
 	 line-height: 2;
 	 cursor: default;
 	 -webkit-user-select: none;
 }
 
-.label-warning.main {
-	margin: 0 2px;
+.reviews {
+	height: 60px;
 }
 
-.panel-title.reviews {
+h2.panel-title.reviews {
 	line-height: 40px;
 }
 
@@ -51,4 +52,12 @@ input[name='filter'] {
 
 .list-group-item {
 	margin: 5px 0;
+}
+
+#review {
+	resize: vertical;
+}
+
+.btn.default {
+	color: black;
 }
