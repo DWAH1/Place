@@ -28,11 +28,36 @@ a {
 }
 
 .label-warning {
-	line-height: 2;
-	cursor: default;
-	-webkit-user-select: none;
+	 margin: 0 3px;
+	 line-height: 2;
+	 cursor: default;
+	 -webkit-user-select: none;
 }
 
-.panel-title.reviews {
+.reviews {
+	height: 60px;
+}
+
+h2.panel-title.reviews {
 	line-height: 40px;
+}
+
+input[name='filter'] {
+	margin-left: 10px;
+	border-radius: 5px;
+	background-color: #4e5d6c;
+	border: none;
+	color: white;
+}
+
+.list-group-item {
+	margin: 5px 0;
+}
+
+#review {
+	resize: vertical;
+}
+
+.btn.default {
+	color: black;
 }
