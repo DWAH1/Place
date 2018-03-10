@@ -1,5 +1,6 @@
 #NPM junk files
 /package-lock.json
+/.env
 
 #WebStorm junk files
 .idea/

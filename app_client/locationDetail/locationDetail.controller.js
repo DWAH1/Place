@@ -3,10 +3,13 @@
 		.module('placeApp')
 		.controller('locationDetailCtrl', locationDetailCtrl);
 
-	locationDetailCtrl.$inject = ['$routeParams', '$modal', 'placeData'];
-	function locationDetailCtrl($routeParams, $modal, placeData) {
-		var vm = this;
+	locationDetailCtrl.$inject = ['$routeParams', '$location', '$modal', 'placeData', 'authentication'];
+	function locationDetailCtrl($routeParams, $location, $modal, placeData, authentication) {
+		let vm = this;
 		vm.locationid = $routeParams.locationid;
+		vm.isLoggedIn = authentication.isLoggedIn();
+		// vm.isAdmin = authentication.isAdmin();
+		vm.currentPath = $location.path();
 
 		placeData.locationById(vm.locationid)
 			.success(function(data) {
@@ -20,7 +23,7 @@
 			});
 
 		vm.popupReviewForm = function() {
-			var modalInstance = $modal.open({
+			let modalInstance = $modal.open({
 				templateUrl: '/reviewModal/reviewModal.view.html',
 				controller: 'reviewModalCtrl as vm',
 				resolve: {

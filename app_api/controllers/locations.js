@@ -27,14 +27,13 @@ module.exports.locationsListByDistance = function(req, res) {
                 distanceField: "dist.calculated",
                 spherical: true,
                 num: 5,
-                maxDistance: 200000000
+                maxDistance: 10000
             }
         }
     ]).then(function(results){
         if (results) {
             var locations = [];
             results.forEach(function(doc) {
-                console.log(doc);
                 locations.push({
                     distance: doc.dist,
                     name: doc.name,
@@ -81,7 +80,6 @@ module.exports.locationsCreate = function(req, res) {
 };
 
 module.exports.locationsReadOne = function(req, res) {
-    console.log('!!!!');
     if(req.params && req.params.locationid) {
         Loc
             .findById(req.params.locationid)

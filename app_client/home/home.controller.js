@@ -5,7 +5,7 @@
         .controller('homeCtrl', homeCtrl);
 
     function homeCtrl($scope, placeData, geolocation) {
-        var vm = this;
+        let vm = this;
         vm.pageHeader = {
             title: 'Place',
             strapline: 'Найдите места для работы посблизости'
@@ -15,10 +15,13 @@
         };
         vm.message = "Проверяем ваше местоположение";
         vm.getData = function(position) {
-            var lat = position.coords.latitude,
+            let lat = position.coords.latitude,
                 lng = position.coords.longitude;
-            console.log(lat);
-            console.log(lng);
+
+            // lat = 48.435237; lng = 35.046494; // DIIT
+            // log current coords
+            console.log(`%clat: ${lat}`, 'color: green');
+            console.log(`%clng: ${lng}`, 'color: green');
             vm.message = "Ищем места поблизости...";
             placeData.locationByCoords(lat, lng)
                 .success(function(data) {

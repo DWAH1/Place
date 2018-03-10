@@ -1,39 +1,67 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
+var User = mongoose.model('User');
 
 var sendJSONResponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
 
-module.exports.reviewsCreate = function(req, res) {
-    var locationid = req.params.locationid;
-    if(locationid) {
-        Loc
-            .findById(locationid)
-            .select('reviews')
-            .exec(function(err, location) {
-                if(err) {
-                    sendJSONResponse(res, 400, err);
-                } else {
-                    doAddReview(req, res, location);
+var getAuthor = function(req, res, callback) {
+    if(req.payload && req.payload.email) {
+        User
+            .findOne({email: req.payload.email})
+            .exec(function(err, user) {
+                if(!user) {
+                    sendJSONResponse(res, 404, {
+                        "message": "Пользователь не найден"
+                    });
+                    return;
+                } else if(err) {
+                    console.log(err);
+                    sendJSONResponse(res, 404, err);
+                    return;
                 }
+                callback(req, res, user.name);
             });
     } else {
         sendJSONResponse(res, 404, {
-            "message": "Not found, location required"
+            "message": "Пользователь не найден"
         });
+        return;
     }
 };
 
-var doAddReview = function(req, res, location) {
+module.exports.reviewsCreate = function(req, res) {
+    getAuthor(req, res, function(req, res, userName) {
+        var locationid = req.params.locationid;
+        if(locationid) {
+            Loc
+                .findById(locationid)
+                .select('reviews')
+                .exec(function(err, location) {
+                    if(err) {
+                        sendJSONResponse(res, 400, err);
+                    } else {
+                        doAddReview(req, res, location, userName);
+                    }
+                });
+        } else {
+            sendJSONResponse(res, 404, {
+                "message": "Not found, location required"
+            });
+        }
+    });
+};
+
+var doAddReview = function(req, res, location, author) {
     if(!location) {
         sendJSONResponse(res, 404, {
             "message": "location not found"
         });
     } else {
         location.reviews.push({
-            author: req.body.author,
+            author: author,
             rating: req.body.rating,
             reviewText: req.body.reviewText
         });
