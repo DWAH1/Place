@@ -8,7 +8,7 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
-    console.log("___");
+
     if(!req.body.name || !req.body.email || !req.body.password) {
         sendJSONresponse(res, 400, {
             message: 'Все поля обязательны'
@@ -20,20 +20,11 @@ module.exports.register = function(req, res) {
     user.name = req.body.name;
     user.email = req.body.email;
 
-    console.log("___>");
-
-
-    console.log('PASS_1: ', req.body.password);
-
     user.setPassword(req.body.password);
 
-    console.log('PASS_2: ', req.body.password);
-
     user.save(function(err) {
-        console.log("___2");
         var token;
         if(err) {
-            console.log(">");
             sendJSONresponse(res, 404, err);
         } else {
             token = user.generateJwt();
@@ -55,7 +46,6 @@ module.exports.login = function(req, res) {
     passport.authenticate('local', function(err, user, info) {
         var token;
         if(err) {
-            console.log("!", err);
             sendJSONresponse(res, 404, err);
             return;
         }

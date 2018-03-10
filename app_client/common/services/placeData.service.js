@@ -13,8 +13,21 @@
             return $http.get('/api/locations/'+locationid);
         };
         let addReviewById = function(locationid, data) {
-            console.log("addRew");
             return $http.post('/api/locations/' + locationid + '/reviews', data, {
+                headers: {
+                    Authorization: 'Bearer ' + authentication.getToken()
+                }
+            });
+        };
+        let deleteReviewById = function (locationid, reviewId) {
+            return $http.delete('/api/locations/' + locationid + '/reviews/' + reviewId, {
+                headers: {
+                    Authorization: 'Bearer ' + authentication.getToken()
+                }
+            });
+        };
+        let updateReviewById = function (locationid, reviewId, data) {
+            return $http.put('/api/locations/' + locationid + '/reviews/' + reviewId, data, {
                 headers: {
                     Authorization: 'Bearer ' + authentication.getToken()
                 }
@@ -23,7 +36,9 @@
         return {
             locationByCoords: locationByCoords,
             locationById: locationById,
-            addReviewById: addReviewById
+            addReviewById: addReviewById,
+            deleteReviewById: deleteReviewById,
+            updateReviewById: updateReviewById
         };
     }
 

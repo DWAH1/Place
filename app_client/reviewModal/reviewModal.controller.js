@@ -5,7 +5,7 @@
 
 	reviewModalCtrl.$inject = ['$modalInstance', 'placeData', 'locationData'];
 	function reviewModalCtrl($modalInstance, placeData, locationData) {
-		var vm = this;
+		let vm = this;
 
         vm.formData = {};
         vm.formData.rating = 3;
@@ -35,7 +35,7 @@
 			.success(function(data) {
 				vm.modal.close(data);
 			})
-			.error(function(data) {
+			.error(function() {
 				vm.formError = "Не удалось сохранить отзыв, попробуйте снова";
 			});
 			return false;

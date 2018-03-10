@@ -8,7 +8,7 @@
 		let vm = this;
 		vm.locationid = $routeParams.locationid;
 		vm.isLoggedIn = authentication.isLoggedIn();
-		// vm.isAdmin = authentication.isAdmin();
+		vm.isAdmin = authentication.isAdmin();
 		vm.currentPath = $location.path();
 
 		placeData.locationById(vm.locationid)
@@ -39,5 +39,40 @@
 				vm.data.location.reviews.push(data);
 			})
 		};
+
+		vm.deleteReviewById = function (reviewId) {
+			if (reviewId && confirm('Рили?')) {
+				placeData.deleteReviewById(vm.locationid, reviewId)
+					.success(function () {
+						vm.data.location.reviews = vm.data.location.reviews.filter(function (review) {
+							return review._id !== reviewId;
+                        });
+						console.log(`%cdeleted <${reviewId}>`, 'color: red');
+                    });
+			}
+        };
+
+		vm.editReviewById = function (reviewId) {
+			if (reviewId) {
+				let currentReview = vm.data.location.reviews.filter(function (review) {
+					return review._id === reviewId;
+                })[0];
+
+				let updatedReviewText = prompt('Комментарий: ', currentReview.reviewText);
+				if (updatedReviewText) {
+					let updatedReview = {
+						author: currentReview.author,
+                        rating: currentReview.rating,
+						reviewText: updatedReviewText,
+						createdOn: currentReview.createdOn
+					};
+                    placeData.updateReviewById(vm.locationid, reviewId, updatedReview)
+                        .success(function () {
+                            currentReview.reviewText = updatedReviewText;
+                            console.log(`%cupdated <${reviewId}>`, 'color: green');
+                        });
+				}
+			}
+        };
 	}
 })();

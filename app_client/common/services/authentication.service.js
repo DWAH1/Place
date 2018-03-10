@@ -52,6 +52,14 @@
             }
         };
 
+        let isAdmin = function () {
+            if(isLoggedIn()){
+                let token = getToken();
+                let payload = JSON.parse($window.atob(token.split('.')[1]));
+                return payload.name === 'admin';
+            }
+        };
+
         return {
             saveToken: saveToken,
             getToken: getToken,
@@ -59,6 +67,7 @@
             login: login,
             logout: logout,
             isLoggedIn: isLoggedIn,
+            isAdmin: isAdmin,
             currentUser, currentUser
         };
     }
