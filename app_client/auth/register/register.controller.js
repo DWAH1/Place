@@ -10,23 +10,22 @@
 			title: 'Создать новый аккаунт'
 		};
 		vm.credentials = {
-			name: "",
-			email: "",
-			password: ""
+			name: '',
+			email: '',
+			password: ''
 		};
 		vm.returnPage = $location.search().page || '/';
 		vm.onSubmit = function() {
-			alert('!');
 			vm.formError = '';
 			if(!vm.credentials.name || !vm.credentials.email || !vm.credentials.password) {
-				vm.formError = "Все поля обязательны, пожалуйста попробуйте снова.";
+				vm.formError = 'Все поля обязательны, пожалуйста попробуйте снова';
 				return false;
 			} else {
 				vm.doRegister();
 			}
 		};
 		vm.doRegister = function() {
-			vm.formError = "";
+			vm.formError = '';
 			authentication
 				.register(vm.credentials)
 				.error(function(err) {

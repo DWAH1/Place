@@ -1,16 +1,16 @@
-var mongoose = require('mongoose');
-var Loc = mongoose.model('Location');
+let mongoose = require('mongoose');
+let Loc = mongoose.model('Location');
 
-var sendJSONResponse = function(res, status, content) {
+let sendJSONResponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
 
 module.exports.locationsListByDistance = function(req, res) {
-    var lng = parseFloat(req.query.lng);
-    var lat = parseFloat(req.query.lat);
+    let lng = parseFloat(req.query.lng);
+    let lat = parseFloat(req.query.lat);
 
-    var point = {
+    let point = {
         type: "Point",
         coordinates: [lng, lat]
     };
@@ -32,7 +32,7 @@ module.exports.locationsListByDistance = function(req, res) {
         }
     ]).then(function(results){
         if (results) {
-            var locations = [];
+            let locations = [];
             results.forEach(function(doc) {
                 locations.push({
                     distance: doc.dist,
@@ -151,7 +151,7 @@ module.exports.locationsUpdateOne = function(req, res) {
 };
 
 module.exports.locationsDeleteOne = function(req, res) {
-    var locationid = req.params.locationid;
+    let locationid = req.params.locationid;
     if(locationid) {
         Loc
             .findByIdAndRemove(locationid)

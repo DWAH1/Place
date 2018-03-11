@@ -1,8 +1,8 @@
-var passport = require('passport');
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
+let passport = require('passport');
+let mongoose = require('mongoose');
+let User = mongoose.model('User');
 
-var sendJSONresponse = function(res, status, content) {
+let sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
@@ -16,14 +16,14 @@ module.exports.register = function(req, res) {
         return;
     }
 
-    var user = new User();
+    let user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
 
     user.setPassword(req.body.password);
 
     user.save(function(err) {
-        var token;
+        let token;
         if(err) {
             sendJSONresponse(res, 404, err);
         } else {
@@ -44,7 +44,7 @@ module.exports.login = function(req, res) {
     }
 
     passport.authenticate('local', function(err, user, info) {
-        var token;
+        let token;
         if(err) {
             sendJSONresponse(res, 404, err);
             return;

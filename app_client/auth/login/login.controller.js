@@ -10,21 +10,21 @@
 			title: 'Войти в аккаунт'
 		};
 		vm.credentials = {
-			email: "",
-			password: ""
+			email: '',
+			password: ''
 		};
 		vm.returnPage = $location.search().page || '/';
 		vm.onSubmit = function() {
 			vm.formError = '';
 			if(!vm.credentials.email || !vm.credentials.password) {
-				vm.formError = "Все поля обязательны, пожалуйста попробуйте снова.";
+				vm.formError = 'Все поля обязательны, пожалуйста попробуйте снова';
 				return false;
 			} else {
 				vm.doLogin();
 			}
 		};
 		vm.doLogin = function() {
-			vm.formError = "";
+			vm.formError = '';
 			authentication
 				.login(vm.credentials)
 				.error(function(err) {

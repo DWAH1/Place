@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var jwt = require('express-jwt');
-var auth = jwt({
+let express = require('express');
+let router = express.Router();
+let jwt = require('express-jwt');
+let auth = jwt({
     secret: process.env.JWT_SECRET,
     userProperty: 'payload'
 });
-var ctrlLocations = require('../controllers/locations');
-var ctrlReviews = require('../controllers/reviews');
-var ctrlAuth = require('../controllers/authentication');
+let ctrlLocations = require('../controllers/locations');
+let ctrlReviews = require('../controllers/reviews');
+let ctrlAuth = require('../controllers/authentication');
 
 router.get('/locations', ctrlLocations.locationsListByDistance);
 router.post('/locations', ctrlLocations.locationsCreate);

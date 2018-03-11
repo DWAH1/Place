@@ -6,6 +6,7 @@
             <label for="filter">Фильтр результатов</label>
             <input id="filter" type="text" name="filter" ng-model="textFilter" />
             <div class="error">{{ vm.message }}</div>
+            <div ng-show="vm.message" class="loader center-block"></div>
             <div class="row list-group">
                 <div class="col-xs-12 list-group-item" ng-repeat="location in vm.data.locations | filter: textFilter">
                     <h4>

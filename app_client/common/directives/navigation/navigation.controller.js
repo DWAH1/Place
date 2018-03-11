@@ -14,6 +14,7 @@
             authentication.logout();
             $location.path('/');
             navvm.isLoggedIn = false;
+            navvm.isAdmin = false;
         };
     }
 })();

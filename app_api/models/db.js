@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var dbURI = 'mongodb://localhost/place';
+let mongoose = require('mongoose');
+let dbURI = 'mongodb://localhost/place';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function() {
@@ -32,7 +32,7 @@ process.on('SIGTERM', function() {
     });
 });
 
-var gracefulShutdown = function(msg, callback) {
+let gracefulShutdown = function(msg, callback) {
     mongoose.connection.close(function() {
         console.log('Mongoose disconnected through ' + msg);
         callback();

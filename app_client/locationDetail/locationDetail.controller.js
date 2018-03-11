@@ -47,7 +47,7 @@
 						vm.data.location.reviews = vm.data.location.reviews.filter(function (review) {
 							return review._id !== reviewId;
                         });
-						console.log(`%cdeleted <${reviewId}>`, 'color: red');
+						console.log(`%cdeleted [${reviewId}]`, 'color: red');
                     });
 			}
         };
@@ -69,7 +69,7 @@
                     placeData.updateReviewById(vm.locationid, reviewId, updatedReview)
                         .success(function () {
                             currentReview.reviewText = updatedReviewText;
-                            console.log(`%cupdated <${reviewId}>`, 'color: green');
+                            console.log(`%cupdated [${reviewId}]`, 'color: orange');
                         });
 				}
 			}
